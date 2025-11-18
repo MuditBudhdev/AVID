@@ -8,9 +8,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def lamb_oseen_vortex(grid_size=128, gamma=5.0, r_core=10.0):
+    # this sets up the graph
     x = np.linspace(-64, 64, grid_size)
     y = np.linspace(-64, 64, grid_size)
     X, Y = np.meshgrid(x, y)
+
+    # this calculates each points distance from 0,0
+    # we add a small value bc we neeed to ensure that we are not square rooting a negative number
     r = np.sqrt(X**2 + Y**2) + 1e-8  
 
     v_theta = (gamma / (2 * np.pi * r)) * (1 - np.exp(-(r**2 / r_core**2)))
